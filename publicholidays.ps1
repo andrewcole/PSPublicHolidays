@@ -12,7 +12,7 @@ function Get-PublicHolidays {
     $URI = "/api/3/action/datastore_search?resource_id=$($ResourceID)"
     do {
         $Results = (Invoke-RestMethod -Uri "https://data.gov.au$($URI)" -Method Get).Result
-        $JurisdictionResults = $Results.records # | Where-Object {($_.Jurisdiction -eq $Jurisdiction)}
+        $JurisdictionResults = $Results.records | Where-Object {($_.Jurisdiction -eq $Jurisdiction)}
         foreach ($Holiday in $JurisdictionResults){
             $HolidayDate = ([datetime]::ParseExact($Holiday.Date, 'yyyyMMdd', $null)).toshortdatestring()
             $HolidayEndDate = ([datetime]::ParseExact($Holiday.Date, 'yyyyMMdd', $null))
