@@ -1,6 +1,8 @@
 function Get-PublicHolidays {
+    [CmdletBinding()]
     param (
-        [Parameter()]
+    [ValidateSet("act","nsw","nt","qld","sa","tas","vic","wa")]
+    [Parameter()]
         [string]
         $Jurisdiction = "nsw",
         [Parameter()]
