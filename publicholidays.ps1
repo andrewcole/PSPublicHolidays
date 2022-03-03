@@ -6,7 +6,7 @@ function Get-PublicHolidays {
     )
     $Holidays = @()
     $URI = "https://data.gov.au/data/api/3/action/datastore_search?resource_id="
-    $ResourceID = '2dee10ef-2d0c-44a0-a66b-eb8ce59d9110'
+    $ResourceID = '33673aca-0857-42e5-b8f0-9981b4755686'
     $Results = (Invoke-RestMethod -Uri "$($URI)$($ResourceID)" -Method Get).Result
     $JurisdictionResults = $Results.records | Where-Object {($_.Jurisdiction -eq $Jurisdiction)}
     $holidays = foreach ($Holiday in $JurisdictionResults){
